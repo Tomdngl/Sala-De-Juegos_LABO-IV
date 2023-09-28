@@ -12,13 +12,13 @@
 }
 
 .container{
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 
 .card{
-    margin-top: 150px;
+    margin-top: 100px;
     width: 350px;
     min-height: 250px;
     background: rgba(109, 8, 109, 0.15);
@@ -38,4 +38,14 @@
 
 .card-title{
     font-size: larger;
+}
+
+.btn{
+    color: aquamarine;
+}
+
+.input{
+    background-color: transparent;
+    text-wrap: nowrap;
+    color: aquamarine;
 }
