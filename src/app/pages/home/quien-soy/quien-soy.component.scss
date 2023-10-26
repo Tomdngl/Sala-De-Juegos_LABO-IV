@@ -1,0 +1,89 @@
+.background-image{
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(to top, transparent 10%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0) 95%),url('/assets/fondos/background-wallpaper.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    margin-top: 4.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 550px;
+    width: 700px;
+    background: rgba(221, 218, 15, 0.75);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 9px );
+    border: 1px solid rgba(33, 165, 241, 0.18);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 20px;
+    z-index: 10;
+    color: rgb(29, 27, 27);
+    padding-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.card-img-top{
+    border-radius: 10%;
+    width: 14rem;
+}
+
+.link{
+    color: rgb(0, 0, 0);
+}
+
+.card-title{
+    font-size: 35px;
+    font-weight: 900;
+    animation: pulse 2s infinite;
+}
+
+.name{
+    font-size: 35px;
+    font-weight: 900;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@-webkit-keyframes flip-in-hor-top{0%{-webkit-transform:rotateX(-80deg);transform:rotateX(-80deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes flip-in-hor-top{0%{-webkit-transform:rotateX(-80deg);transform:rotateX(-80deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}
+.flip-in-hor-top{-webkit-animation:flip-in-hor-top .8s cubic-bezier(.25,.46,.45,.94) both;animation:flip-in-hor-top .8s cubic-bezier(.25,.46,.45,.94) both}
+
+
+.github-button {
+    background-color: #137adb;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.github-button:hover {
+    background-color: #242424;
+}

@@ -1,0 +1,46 @@
+<div class="background-image">
+  <div class="container">
+    <div class="card text-center slide-in-blurred-right">
+      <h4 class="card-title">Iniciar Sesión</h4>
+      <img class="card-img-top mx-auto" src="../../../../assets/login.png">
+      <div class="card-body">
+        <p class="card-title">Ingrese sus credenciales</p>
+        <form [formGroup]="formLogin">
+          <label for="email" class="form-label email-label">Correo</label>
+          <input type="email" class="form-control input" formControlName="email" />
+          <small style="color: red"
+            *ngIf="formLogin.controls['email'].errors?.['required'] && formLogin.controls['email'].dirty">
+            El campo esta vacío
+          </small>
+          <small style="color: red"
+            *ngIf="formLogin.controls['email'].errors?.['email'] && formLogin.controls['email'].dirty">
+            El mail no es válido
+          </small>
+          <br>
+          <label for="clave" class="form-label clave-label">Contraseña</label>
+          <input type="password" class="form-control input" formControlName="clave" />
+          <small style="color: red"
+            *ngIf="formLogin.controls['clave'].errors?.['required'] && formLogin.controls['clave'].dirty">
+            El campo esta vacío
+          </small>
+          <small style="color: red"
+            *ngIf="formLogin.controls['clave'].errors?.['minlength'] && formLogin.controls['clave'].dirty">
+            La longitud minima es de 6 caracteres
+          </small>
+          <br>
+          <div class="botones">
+            <button class="btn text-center" (click)="CargarForm(1)">
+                <i class="fas fa-user-tie"></i> Admin
+            </button>
+            <button class="btn text-center" (click)="CargarForm(2)">
+                <i class="fas fa-user"></i> Empleado
+            </button>
+        </div>        
+          <button class="w-100 btn text-center" [disabled]="formLogin.invalid" (click)="Loguear()">
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

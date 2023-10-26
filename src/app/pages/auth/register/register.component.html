@@ -1,0 +1,45 @@
+<div class="background-image">
+    <div class="container">
+        <div class="card text-center slide-in-blurred-right" >
+            <h4 class="card-title">Registro</h4>
+            <img class="card-img-top mx-auto" src="../../../../assets/login.png">
+            <div class="card-body">
+                <p class="card-title">Ingrese sus credenciales</p>
+                <form [formGroup]="formRegister">
+                    <label for="email" class="form-label email-label">Correo</label>
+                    <input type="email" class="form-control input" formControlName="email"/>
+                    <small style="color: red" *ngIf="formRegister.controls['email'].errors?.['required'] && formRegister.controls['email'].dirty">
+                        Debe ingresar un email.
+                    </small>
+                    <small style="color: red" *ngIf="formRegister.controls['email'].errors?.['email'] && formRegister.controls['email'].dirty">
+                        El email no es válido.
+                    </small>
+                    <br>
+                    <label for="nombre" class="form-label nombre-label">Usuario</label>
+                    <input type="text" class="form-control input" formControlName="nombre"/>
+                    <small style="color: red" *ngIf="formRegister.controls['nombre'].errors?.['required'] && formRegister.controls['nombre'].dirty">
+                      Debe ingresar un nombre de usuario.
+                    </small>
+                    <small style="color: red" *ngIf="formRegister.controls['nombre'].errors?.['containsSpaces'] && formRegister.controls['nombre'].dirty">
+                      El nombre de usuario no puede contener espacios.
+                    </small>
+                    <br>
+                    <label for="clave" class="form-label clave-label">Contraseña</label>
+                    <input type="password" class="form-control input" formControlName="clave"/>
+                    <small style="color: red" *ngIf="formRegister.controls['clave'].errors?.['required'] && formRegister.controls['clave'].dirty">
+                      Debe ingresar una contraseña.
+                    </small>
+                    <small style="color: red" *ngIf="formRegister.controls['clave'].errors?.['minlength'] && formRegister.controls['clave'].dirty">
+                      La longitud debe superar los 6 caracteres
+                    </small>
+                    <br>
+                    <br>
+                  <button class="w-100 btn text-center" [disabled]="formRegister.invalid" (click)="Registro()">
+                    Registrarse
+                  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  

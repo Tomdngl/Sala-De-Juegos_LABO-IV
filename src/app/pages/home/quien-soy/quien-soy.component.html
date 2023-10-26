@@ -1,0 +1,17 @@
+<div class="background-image">
+    <div class="container">
+        <div class="card text-center flip-in-hor-top" >
+            <h4 class="card-title">Primer Parcial - Labo IV</h4>
+            <br>
+            <img class="card-img-top mx-auto" [src]="perfil?.avatar_url">
+            <div class="card-body">
+                <p class="name">{{perfil?.name}}</p>
+                <p class="card-subtitle">{{perfil?.location}}</p>
+                <p class="card-text">{{perfil?.bio}}</p>
+                <a class="github-button" href="{{perfil?.html_url}}" target="_blank">
+                    <i class="fab fa-github"></i> Visitar GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

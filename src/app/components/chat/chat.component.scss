@@ -1,0 +1,104 @@
+.sidebar {
+    position: fixed;
+    right: 0;
+    width: 23rem;
+    height: 100vh;
+    background-color: transparent;
+    z-index: 1;
+    transition: transform 0.5s ease-out;
+    transform: translateY(-100%);
+}
+
+.sidebar.show {
+    transform: translateY(0);
+}
+
+.chat {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+.card {
+    background: rgba(7, 7, 7, 0.39);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.2px);
+    -webkit-backdrop-filter: blur(4.2px);
+    height: 79vh;
+}
+
+.titulo {
+    font-weight: bold;
+    color: yellow;
+}
+
+.card-title{
+    margin-top: 5px;
+}
+
+.card-body {
+    background-color: #fdfdcd; 
+    overflow: scroll;
+    padding: 0.3rem;
+}
+
+
+.card-body::-webkit-scrollbar {
+    display: none;
+}
+
+.mensaje-enviado {
+    display: block;
+    float: right;
+    background-color: #8eebbb;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    min-width: 51%;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.mensaje-recibido {
+    display: block;
+    float: left;
+    background-color: #62e1fb;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    min-width: 51%;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.email-1 {
+    font-size: 0.7;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.email-2 {
+    font-size: 0.7;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.fecha {
+    font-size: 0.6rem;
+    color: #3d3d3d;
+    text-align: right;
+    float: right;
+}
+
+.input-group-text{
+    border-radius: 0px;
+}
+
+.btn-enviar {
+    cursor: pointer;
+    color: #fff;
+    background:yellow;
+    img{
+        width: 2rem;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="background-image">
+    <div class="container">
+        <div class="card text-center flip-in-hor-top" >
+            <h4 class="card-title">Bienvenido a la sala de juegos.</h4>
+            <br>
+            <img class="card-img-top mx-auto" [src]="'/assets/favicon.png'">
+            <div class="card-body">
+                <br>
+                <p class="card-subtitle">Inicia sesión para comenzar a jugar!</p>
+                <br>
+                <p class="card-text">Practica y logra las mejores puntuaciones para quedar arriba en los rankings de puntuacion. ¡Mucha suerte y que te diviertas!</p>
+                <a class="login-button" [routerLink]="usuario !== null ? '/juegos/sala' : '/auth/login'">
+                    <i class="fas fa-door-open"></i> Ingresar
+                </a>                
+            </div>
+        </div>
+    </div>
+</div>
