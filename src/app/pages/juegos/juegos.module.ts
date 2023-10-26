@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SalaComponent } from './sala/sala.component';
-import { AhorcadoComponent } from './ahorcado/ahorcado.component';
-import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
-import { PreguntadosComponent } from './preguntados/preguntados.component';
 
+import { JuegosRoutingModule } from './juegos-routing.module';
+import { SalaComponent } from './sala/sala.component';
+import { PreguntadosComponent } from './preguntados/preguntados.component';
+import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
+import { AhorcadoComponent } from './ahorcado/ahorcado.component';
+import { PuzzleComponent } from './puzzle/puzzle.component';
 
 
 @NgModule({
   declarations: [
     SalaComponent,
-    AhorcadoComponent,
+    PreguntadosComponent,
     MayorMenorComponent,
-    PreguntadosComponent
+    AhorcadoComponent,
+    PuzzleComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    JuegosRoutingModule
   ]
 })
 export class JuegosModule { }

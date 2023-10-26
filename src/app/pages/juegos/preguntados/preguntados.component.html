@@ -1,1 +1,34 @@
-<p>preguntados works!</p>
+<section class="preguntados-container">
+    <div class="container">
+      
+      <div class="row" *ngIf="preguntasCargadas">
+        <div class="contendor-bandera" *ngIf="juegoActivo">
+          <h3>¿ De qué país es la bandera ?</h3>
+          <img src="{{ preguntaActual.flag }}" alt="bandera" />
+        </div>
+        <div class="contenedor-pregunta col">
+          <p class="puntuacion">
+            Puntuación: {{ score }}
+            <span *ngIf="juegoActivo" class="intentos">(Intentos: {{ intentos }}/10)</span>
+          </p>
+          <p class="juego-terminado" [ngClass]="victoria ? 'victoria' : 'derrota'" *ngIf="terminado">
+            {{ stringResultado }}
+          </p>
+          <div *ngIf="juegoActivo" style="display: block;">
+            <div class="grid-container">
+              <button class="btn-opcion" *ngFor="let option of preguntaActual.options" (click)="play(option, $event)"
+                [ngClass]="respuestaCorrecta ? 'correcta' : ''" [ngClass]="respuestaIncorrecta ? 'incorrecta' : ''">
+                {{ option }}
+              </button>
+            </div>
+          </div>
+          <div *ngIf="!juegoActivo">
+            <button class="btn-reiniciar" (click)="restartGame()">
+              Reiniciar Juego
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>

@@ -25,7 +25,7 @@
           </small>
           <small style="color: red"
             *ngIf="formLogin.controls['clave'].errors?.['minlength'] && formLogin.controls['clave'].dirty">
-            La longitud minima es de 6 caracteres
+            La longitud mínima es de 6 caracteres
           </small>
           <br>
           <div class="botones">
@@ -33,7 +33,7 @@
                 <i class="fas fa-user-tie"></i> Admin
             </button>
             <button class="btn text-center" (click)="CargarForm(2)">
-                <i class="fas fa-user"></i> Empleado
+                <i class="fas fa-user"></i> Usuario
             </button>
         </div>        
           <button class="w-100 btn text-center" [disabled]="formLogin.invalid" (click)="Loguear()">

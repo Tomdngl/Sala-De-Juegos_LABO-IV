@@ -16,10 +16,9 @@ const routes: Routes = [
     loadChildren:() => import('../app/pages/auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path:'quien-soy',
-    redirectTo:'/home/quien-soy',
-    pathMatch:'full'
-  },
+    path:'juegos',
+    loadChildren:() => import('../app/pages/juegos/juegos.module').then(m => m.JuegosModule)
+  }
 ];
 
 @NgModule({

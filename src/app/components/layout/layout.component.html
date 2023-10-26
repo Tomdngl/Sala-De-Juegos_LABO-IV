@@ -13,7 +13,7 @@
           </li>
           <li class="nav-item">
             <a *ngIf="usuario" class="nav-link active" aria-current="page" routerLinkActive="active"
-              routerLinkActive="router-link-active" [routerLink]="['/juegos']">Juegos</a>
+              routerLinkActive="router-link-active" [routerLink]="['juegos/sala']">Juegos</a>
           </li>
           <li class="nav-item dropdown-center" *ngIf="!usuario">
             <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/quien-soy']">Quien soy</a>
+            <a class="nav-link active" [routerLink]="['/home/quien-soy']">Quien soy</a>
           </li>
         </ul>
         <form class="d-flex" *ngIf="usuario">

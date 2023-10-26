@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
         break;
       case 2:
         this.formLogin.patchValue({
-          email:"empleado@empleado.com",
-          clave:"empleado1234"
+          email:"usuario@usuario.com",
+          clave:"usuario1234"
         })
         break;
     }
