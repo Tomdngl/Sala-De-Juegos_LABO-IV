@@ -119,7 +119,7 @@ export class AhorcadoComponent {
             this.image = this.image + '_v';
             this.juegoActivado = false;
             this.victoria = true;
-            this.createResult();
+            this.crearResultado();
             this.toastService.showSuccess('Has ganado.', 'Ahorcado');
             break;
           }
@@ -138,7 +138,7 @@ export class AhorcadoComponent {
             elemento.disabled = true;
           }
           if (this.intentos === 0) {
-            this.createResult();
+            this.crearResultado();
             this.toastService.showError('Has perdido.', 'Ahorcado');
             this.juegoActivado = false;
           }
@@ -168,7 +168,7 @@ export class AhorcadoComponent {
     }
   }
 
-  createResult() {
+  crearResultado() {
     let resultado = {
       juego:'Ahorcado',
       puntaje: this.score,

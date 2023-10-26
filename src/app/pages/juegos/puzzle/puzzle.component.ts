@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-//import { DictionaryService } from '../dictionary.service';
-//import { GameDBService } from '../gamedb.service';
+import { Component } from '@angular/core';
+import { ResultadosService } from 'src/app/services/resultados.service';
+import { SwalService } from 'src/app/services/swal.service';
+import { ToastService } from 'src/app/services/toast.service';
+import * as moment from 'moment';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-puzzle',
@@ -8,92 +11,152 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./puzzle.component.scss']
 })
 export class PuzzleComponent {
-  readonly imagesPerCategory = 20;
-  readonly secondsInAMinute = 60;  
-  private subscription: any;  
-  private intervalId: any;
-  private categoryId: number = -1;
-  private seconds: number = 0;
-  folder: string = "";
-  image: number = 0;
-  over: boolean = false;
-  time: string = '';
-  moves: number = 0;
-  fails: number = 0;
-  goal: string = '';
-  end: string = '';
+  usuario: any = null;
+  pattern: number[] = [];
+  patronUsuario: number[] = [];
+  victoria: boolean = false;
+  isGameOn: boolean = false;
+  isUserTurn: boolean = false;
+  isGameOver: boolean = false;
+  perdio: boolean = false;
+  level: number = 1;
+  colorActivo: number | null = null;
 
-  //constructor(private dictionary: DictionaryService, private gamedb: GameDBService) {}
+  private audioContext: AudioContext | null = null;
 
-
+  constructor(
+    private swalService: SwalService, 
+    private toastService: ToastService,
+    private firestore: ResultadosService,
+    private userService: UserService
+    ){
+    }
 
   ngOnInit(): void {
-    //this.subscription = this.dictionary.getTranslations().subscribe((data) => {
-    //  this.goal = data['GAME_GOAL'];
-    //  this.end = data['GAME_OVER'];
-    //});      
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-    
-  refreshTimer(): void {
-    this.intervalId = setInterval(() => {
-      if (this.over){
-        clearInterval(this.intervalId);
-      }else{
-        this.seconds++;
-        let minutes = Math.floor(this.seconds / this.secondsInAMinute);
-        let seconds = this.seconds % this.secondsInAMinute + 's';
-        this.time =  minutes ? minutes + 'm '  + seconds : seconds;
+    this.userService.user$.subscribe(user => {
+      if(user)
+      {
+        this.usuario = user
       }
-    }, 1000);
+    })
   }
 
-  reset(): void {
-    this.moves = 0
-    this.fails = 0;
-    this.over = false;
-    this.seconds = 0;
-    if (this.intervalId){
-      clearInterval(this.intervalId);
+  startGame() {
+    this.resetearJuego();
+    this.audioContext = new AudioContext();
+    this.generarPatron();
+    this.jugarPatron();
+  }
+
+  restartGame() {
+    this.resetearJuego();
+    this.level = 1;
+    this.generarPatron();
+    this.jugarPatron();
+  }
+
+  resetearJuego() {
+    this.pattern = [];
+    this.patronUsuario = [];
+    this.isGameOn = true;
+    this.isGameOver = false;
+    this.colorActivo = null;
+    this.perdio = false;
+  }
+
+  generarPatron() {
+    if (this.level != 1) {
+      this.toastService.showSuccess('Correcto.', 'Simon');
     }
-    this.refreshTimer();
-  }
-/*
-  onCategoryChange(category): void {
-   this.categoryId = category.categoryId;
-   this.folder = category.folder;
-   this.reset();
-   this.image = Math.floor(Math.random() * this.imagesPerCategory);
+    this.pattern = Array.from({ length: this.level }, () => Math.floor(Math.random() * 4) + 1);
   }
 
-  onImageChange(image): void {
-    this.image = image;
-    this.reset();
+  jugarPatron() {
+    let index = 0;
+    const colors = [null, 1, 2, 3, 4];
+
+    const playNextColor = () => {
+      if (index < this.pattern.length) {
+        const colorAJugar = this.pattern[index];
+        this.reproducirSonido(colorAJugar);
+        this.colorActivo = colorAJugar;
+        this.patronUsuario.push(colorAJugar);
+
+        console.log(`Color activado: ${colorAJugar}`);
+
+        setTimeout(() => {
+          this.colorActivo = null;
+          this.patronUsuario.pop();
+          index++;
+          playNextColor();
+        }, 1000);
+      } else {
+        this.isUserTurn = true;
+      }
+    };
+
+    playNextColor();
   }
 
-  onStatsChange({moves, fails, over}): void {
-    this.moves = moves;
-    this.fails = fails;
-    this.over = over;
-    this.save();
-  }
-*/
 
-/*
-  save(): void {
-    if (this.over) {
-        this.gamedb.save({
-          categoryId: this.categoryId,
-          folder: this.folder,
-          image: this.image,
-          time: this.time,
-          moves: this.moves,
-          fails: this.fails
-        })
+  handleUserInput(color: number) {
+    if (this.isUserTurn) {
+      this.reproducirSonido(color);
+      this.patronUsuario.push(color);
+
+      if (color !== this.pattern[this.patronUsuario.length - 1]) {
+        this.patronUsuario = [];
+        this.isUserTurn = false;
+        this.isGameOver = true;
+        this.perdio = true;
+        this.swalService.MostrarError("Perdiste!", "Has perdido.")
+        this.CrearResultado();
+      } else if (this.patronUsuario.length === this.pattern.length) {
+        if (this.level === 10) {
+          this.victoria = true;
+          this.swalService.MostrarExito("Felicitaciones", "Has ganado");
+          this.CrearResultado();
+        } else {
+          this.level++;
+          this.generarPatron();
+          this.patronUsuario = [];
+          this.isUserTurn = false;
+          setTimeout(() => this.jugarPatron(), 2000);
+        }
+      }
+    }
+    else{
+      if(this.isGameOn)
+      {
+        if(this.perdio)
+        {
+          this.swalService.MostrarError("Atención!", "Has perdido, para volver a jugar reinicia el juego.")
+        }
+        else
+        {
+          this.swalService.MostrarError("Atención!", "Espera a que finalice la secuencia.")
+        }        
+      }
+      else
+      {
+        this.swalService.MostrarError("Atención!", "Debes iniciar el juego.")
+      }
     }
   }
-*/
+
+  reproducirSonido(color: number) {
+    const audio = new Audio(`assets/simon/sonido${color}.mp3`);
+    audio.play();
+  }
+
+  CrearResultado() {
+    let resultado = {
+      juego: 'Simon',
+      puntaje: this.level,
+      usuario: this.usuario,
+      victoria: this.victoria,
+      fecha: moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
+    }
+    this.firestore.guardarResultado(resultado);
+  }
 }

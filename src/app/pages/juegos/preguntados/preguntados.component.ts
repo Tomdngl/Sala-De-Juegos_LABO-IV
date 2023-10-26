@@ -30,16 +30,15 @@ export class PreguntadosComponent {
   constructor(
     private apiPaises: ApiPaisesService,
     private toastService: ToastService,
-    private swalService:SwalService,
-    private userService:UserService,
-    private firestore:ResultadosService
+    private swalService: SwalService,
+    private userService: UserService,
+    private firestore: ResultadosService
   ) {
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.userService.user$.subscribe(user => {
-      if(user)
-      {
+      if (user) {
         this.usuario = user
       }
     })
@@ -122,7 +121,7 @@ export class PreguntadosComponent {
           if (this.score >= 4) {
             this.victoria = true;
             this.stringResultado = 'Has ganado.';
-            this.swalService.MostrarExito("Felicidades, ganaste!","EXCELENTE");
+            this.swalService.MostrarExito("Felicidades, ganaste!", "EXCELENTE");
           } else {
             this.toastService.showError('Has perdido.', 'Preguntados');
           }
@@ -130,7 +129,7 @@ export class PreguntadosComponent {
         }
       }
     }
-  } 
+  }
 
   restartGame() {
     this.generarPreguntas();
@@ -143,15 +142,15 @@ export class PreguntadosComponent {
     this.stringResultado = 'Has perdido.';
     this.preguntaActual = this.preguntas[this.indiceActual];
     this.toastService.showInfo('Juego Reiniciado', 'Preguntados');
-  } 
+  }
 
   CrearResultado() {
     let resultado = {
-      juego:'Preguntados',
+      juego: 'Preguntados',
       puntaje: this.score,
       usuario: this.usuario,
-      victoria:this.victoria,
-      fecha:moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
+      victoria: this.victoria,
+      fecha: moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
     }
     this.firestore.guardarResultado(resultado);
   }

@@ -83,11 +83,17 @@ export class MayorMenorComponent {
     private toastService: ToastService,
     public loginService: UserService,
     private swalService: SwalService,
-    private resultados: ResultadosService
+    private resultados: ResultadosService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
-
+    this.userService.user$.subscribe(user => {
+      if(user)
+      {
+        this.usuario = user
+      }
+    })
   }
 
   startGame() {

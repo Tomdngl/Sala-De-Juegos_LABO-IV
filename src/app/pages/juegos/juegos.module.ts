@@ -7,6 +7,7 @@ import { PreguntadosComponent } from './preguntados/preguntados.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
   ],
   imports: [
     CommonModule,
-    JuegosRoutingModule
+    JuegosRoutingModule,
+    FormsModule
   ]
 })
 export class JuegosModule { }
