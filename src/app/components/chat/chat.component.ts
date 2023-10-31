@@ -55,7 +55,7 @@ export class ChatComponent {
       this.scrollToTheLastElementByClassName();
     }
     else{
-      this.swal.MostrarError("¡ERROR!","Asegurese de escribir algo")
+      this.swal.Error("¡ERROR!","Asegurese de escribir algo")
     }
   }
 

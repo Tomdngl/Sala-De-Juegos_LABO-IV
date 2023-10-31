@@ -151,9 +151,9 @@ export class MayorMenorComponent {
       if (this.score >= 5) {
         this.victoria = true;
         this.stringResultado = 'Ganaste.';
-        this.swalService.MostrarExito("Has ganado", "!Felicidades!");
+        this.swalService.Exito("Has ganado", "!Felicidades!");
       } else {
-        this.swalService.MostrarError("Perdiste", "!Mejor suerte la próxima!");
+        this.swalService.Error("Perdiste", "!Mejor suerte la próxima!");
       }
       this.CrearResultado();
     }

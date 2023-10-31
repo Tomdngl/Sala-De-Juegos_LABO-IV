@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
 
       if(res)
       {
-        this.swal.MostrarExito("Sesión iniciada","Redirigiendo a home").then(() => {
+        this.swal.Exito("Sesión iniciada","Redirigiendo a home").then(() => {
           this.CargarForm(-1)
           this.router.navigate([''])
         })
       }
     } catch (error) {
-      this.swal.MostrarError("Error","Las credenciales no son correctas")
+      this.swal.Error("Error","Las credenciales no son correctas")
       this.CargarForm(-1)
     }
   }

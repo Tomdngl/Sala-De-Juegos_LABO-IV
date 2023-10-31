@@ -44,11 +44,11 @@ export class UserService {
   {
     this.afAuth.signOut().then(() =>{
       this.seLogueo = false;
-      this.swal.MostrarExito("Redirigiendo a home","Sesión cerrada.").then(() => {
+      this.swal.Exito("Redirigiendo a home","Sesión cerrada.").then(() => {
         this.router.navigate(['home'])
       })
     }).catch((error) => {
-      this.swal.MostrarError("Ha ocurrido un error inesperado.",this.ObtenerMensajeError(error.errorCode))
+      this.swal.Error("Ha ocurrido un error inesperado.",this.ObtenerMensajeError(error.errorCode))
       console.log(error)
     })
   }
@@ -65,13 +65,13 @@ export class UserService {
       }).then(() => {
         usuario.idUsuario = data.user?.uid
         this.CrearLogUsuario(usuario).then(() => {
-          this.swal.MostrarExito("Usuario registrado.","Redirigiendo a home").then(() =>{
+          this.swal.Exito("Usuario registrado.","Redirigiendo a home").then(() =>{
             this.router.navigate([''])
           })
         })
       })
     }).catch((error) => {
-      this.swal.MostrarError("¡ERROR!",this.ObtenerMensajeError(error.errorCode))
+      this.swal.Error("¡ERROR!",this.ObtenerMensajeError(error.errorCode))
     })
   }
 

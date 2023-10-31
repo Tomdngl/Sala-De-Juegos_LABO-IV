@@ -14,7 +14,7 @@ export const canActivateAdminGuard: CanActivateFn = (route, state) => {
     return true
   }
 
-  swal.MostrarError("ERROR","¡No puede ingresar sin ser Administrador!")
+  swal.Error("ERROR","¡No puede ingresar sin ser Administrador!")
   router.navigateByUrl('/');
   return false;
 };

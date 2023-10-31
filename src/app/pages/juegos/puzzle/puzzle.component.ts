@@ -109,12 +109,12 @@ export class PuzzleComponent {
         this.isUserTurn = false;
         this.isGameOver = true;
         this.perdio = true;
-        this.swalService.MostrarError("Que pena", "Has perdido.")
+        this.swalService.Error("Que pena", "Has perdido.")
         this.CrearResultado();
       } else if (this.patronUsuario.length === this.pattern.length) {
         if (this.level === 2) {
           this.victoria = true;
-          this.swalService.MostrarExito("Felicitaciones", "Has ganado");
+          this.swalService.Exito("Felicitaciones", "Has ganado");
           this.isGameOver = true;
           this.CrearResultado();
         } else {
@@ -131,16 +131,16 @@ export class PuzzleComponent {
       {
         if(this.perdio)
         {
-          this.swalService.MostrarError("Atención!", "Has perdido, para volver a jugar reinicia el juego.")
+          this.swalService.Error("Atención!", "Has perdido, para volver a jugar reinicia el juego.")
         }
         else
         {
-          this.swalService.MostrarError("Atención!", "Espera a que finalice la secuencia.")
+          this.swalService.Error("Atención!", "Espera a que finalice la secuencia.")
         }        
       }
       else
       {
-        this.swalService.MostrarError("Atención!", "Debes iniciar el juego.")
+        this.swalService.Error("Atención!", "Debes iniciar el juego.")
       }
     }
   }

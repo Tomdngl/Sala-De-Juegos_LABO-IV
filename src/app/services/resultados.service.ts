@@ -16,4 +16,9 @@ export class ResultadosService {
   {
     this.firestore.collection<any>('resultadosJuegos').add(resultado);
   }
+
+  guardarEncuesta(encuesta:any)
+  {
+    return this.firestore.collection<any>('encuestas').add(encuesta);
+  }
 }

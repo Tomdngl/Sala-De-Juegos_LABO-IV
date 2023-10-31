@@ -121,7 +121,7 @@ export class PreguntadosComponent {
           if (this.score >= 4) {
             this.victoria = true;
             this.stringResultado = 'Has ganado.';
-            this.swalService.MostrarExito("Felicidades, ganaste!", "EXCELENTE");
+            this.swalService.Exito("Felicidades, ganaste!", "EXCELENTE");
           } else {
             this.toastService.showError('Has perdido.', 'Preguntados');
           }

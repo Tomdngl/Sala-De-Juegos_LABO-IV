@@ -8,7 +8,7 @@ export class SwalService {
 
   constructor() { }
 
-  MostrarError(titulo:string,mensaje:string)
+  Error(titulo:string,mensaje:string)
   {
     return Swal.fire({
       title: titulo,
@@ -17,7 +17,7 @@ export class SwalService {
     })
   }
 
-  MostrarExito(titulo:string,mensaje:string)
+  Exito(titulo:string,mensaje:string)
   {
     return Swal.fire({
       title: titulo,

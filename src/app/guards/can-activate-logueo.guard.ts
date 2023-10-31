@@ -14,7 +14,7 @@ export const canActivateLogueoGuard: CanActivateFn = (route, state) => {
     return true
   }
 
-  swal.MostrarError("ERROR","¡No puede ingresar sin estar logueado!")
+  swal.Error("ERROR","¡No puede ingresar sin estar logueado!")
   router.navigateByUrl('/');
   return false;
 };
