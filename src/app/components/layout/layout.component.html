@@ -27,6 +27,16 @@
           <li class="nav-item">
             <a class="nav-link active" [routerLink]="['/home/quien-soy']">Quien soy</a>
           </li>
+
+          <li class="nav-item dropdown-center" *ngIf="usuario">
+            <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Datos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/datos/resultados']">Resultados</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/datos/encuesta']">Encuesta</a></li>
+            </ul>
+          </li>
         </ul>
         <form class="d-flex" *ngIf="usuario">
           <button class="btn chat-icon" type="submit" (click)="MostrarChat()">

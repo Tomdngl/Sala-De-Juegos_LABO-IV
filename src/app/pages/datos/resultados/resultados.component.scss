@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+.titulo h1 {
+  text-align: center;
+      font-size:30px; font-weight:300; color:#ffffff; letter-spacing:1px;
+      text-transform: uppercase;
+  
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+  }
+  
+  .titulo h1:after,.titulo h1:before {
+      content: " ";
+      display: block;
+      border-bottom: 1px solid #99029e;
+      border-top: 1px solid #99029e;
+      height: 5px;
+    background-color:#f8f8f8;
+  }
+
+.divbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.box {
+  position: relative;
+  z-index: 5;
+  width: 60%;
+  height: 80%;
+  background: rgba(21, 21, 21, 0.09);
+  margin: 0 auto;
+  margin-top: 2%;
+  padding: 10px;
+  color: rgb(252, 255, 253);
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px groove;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #ffffff8b;
+  z-index: -1;
+  border-radius: 20px;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #ffffff7a;
+  z-index: -1;
+  filter: blur(40px);
+  border-radius: 20px;
+}
+
+.box:nth-child(1)::before,
+.box:nth-child(1)::after {
+  background: linear-gradient(235deg, #7b00ff4e, #01061574, #2195f361);
+}
+
+.box .glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  display: block;
+  background: rgba(15, 13, 67, 0.218);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.box .content {
+  z-index: 4;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.listado-container {
+  font-family: "Poppins", sans-serif;
+  background-image: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0) 95%), url("/assets/fondos/datos.gif");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  padding-top: 4rem;
+  position: fixed;
+}
+
+.contenedor-tabla{
+  height: 5rem;
+  width: 10rem;
+  background: rgba(14, 9, 9, 0.1);
+  backdrop-filter: blur(35px);
+  border: 2px solid white;
+  padding: 30px 30px 30px 30px;
+}
+
+.table {
+  --bs-table-color:white;
+  --bs-table-bg:transparent;
+  --bs-table-hover-bg:white;
+  --bs-table-hover-color:white;
+  width: 100%;
+  position: relative;
+}
+
+td,th {
+  text-align: center;
+}
+
+.contenedor-form {
+  width: 80%;
+  position: relative;
+  background-color: transparent;
+  color: white;
+}
+
+.btn-juegos {
+  margin-top: 4%;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #262a57;
+  padding: 10px 22px;
+  border: #000000 5px solid;
+  box-shadow: 0px 5px 5px #262a57;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  display: fixed;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.btn-disabled {
+  background-color: gray;
+}

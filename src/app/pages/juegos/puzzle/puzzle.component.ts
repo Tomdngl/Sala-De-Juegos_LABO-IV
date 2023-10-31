@@ -109,12 +109,13 @@ export class PuzzleComponent {
         this.isUserTurn = false;
         this.isGameOver = true;
         this.perdio = true;
-        this.swalService.MostrarError("Perdiste!", "Has perdido.")
+        this.swalService.MostrarError("Que pena", "Has perdido.")
         this.CrearResultado();
       } else if (this.patronUsuario.length === this.pattern.length) {
-        if (this.level === 10) {
+        if (this.level === 2) {
           this.victoria = true;
           this.swalService.MostrarExito("Felicitaciones", "Has ganado");
+          this.isGameOver = true;
           this.CrearResultado();
         } else {
           this.level++;

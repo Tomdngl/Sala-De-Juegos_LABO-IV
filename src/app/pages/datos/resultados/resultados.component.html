@@ -1,0 +1,123 @@
+<div class="listado-container">
+    <div id="poster" class="box">
+      <div class="glass"></div>
+      <div class="content">
+        <div>
+            <div class="titulo">
+                <h1>Estadísticas generales</h1>
+              </div>
+          <table class="table contenedor-tabla container">
+            <thead>
+              <tr>
+                <th scope="col">JUEGO</th>
+                <th scope="col">VECES JUGADO</th>
+                <th scope="col">VICTORIAS</th>
+                <th scope="col">DERROTAS</th>
+                <th scope="col">PUNTAJE PROMEDIO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tr">
+                <td>AHORCADO</td>
+                <td>{{ ahorcadoVecesJugadas }}</td>
+                <td>{{ ahorcadoVictorias }}</td>
+                <td>{{ ahorcadoDerrotas }}</td>
+                <td>{{ ahorcadoPuntajePromedio }}</td>
+              </tr>
+              <tr class="tr">
+                <td>MAYOR O MENOR</td>
+                <td>{{ mayorMenorVecesJugadas }}</td>
+                <td>{{ mayorMenorVictorias }}</td>
+                <td>{{ mayorMenorDerrotas }}</td>
+                <td>{{ mayorMenorPuntajePromedio }}</td>
+              </tr>
+              <tr class="tr">
+                <td>PREGUNTADOS</td>
+                <td>{{ preguntadosVecesJugadas }}</td>
+                <td>{{ preguntadosVictorias }}</td>
+                <td>{{ preguntadosDerrotas }}</td>
+                <td>{{ preguntadosPuntajePromedio }}</td>
+              </tr>
+              <tr class="tr">
+                <td>SIMON</td>
+                <td>{{ simonVecesJugadas }}</td>
+                <td>{{ simonVictorias }}</td>
+                <td>{{ simonDerrotas }}</td>
+                <td>{{ simonPuntajePromedio }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div *ngIf="seleccionoUnUsuario">
+            <div class="titulo">
+                <h1>Estadísticas de:
+                    {{usuarioSeleccionado}}</h1>
+              </div>
+          <table class="table contenedor-tabla container">
+            <thead>
+              <tr>
+                <th scope="col">JUEGO</th>
+                <th scope="col">VECES JUGADO</th>
+                <th scope="col">VICTORIAS</th>
+                <th scope="col">DERROTAS</th>
+                <th scope="col">PUNTAJE PROMEDIO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tr">
+                <td>AHORCADO</td>
+                <td>{{ ahorcadoVecesJugadasDelUsuarioSeleccionado }}</td>
+                <td>{{ ahorcadoVictoriasDelUsuarioSeleccionado }}</td>
+                <td>{{ ahorcadoDerrotasDelUsuarioSeleccionado }}</td>
+                <td>{{ ahorcadoPuntajePromedioDelUsuarioSeleccionado }}</td>
+              </tr>
+              <tr class="tr">
+                <td>MAYOR O MENOR</td>
+                <td>{{ mayorMenorVecesJugadasDelUsuarioSeleccionado }}</td>
+                <td>{{ mayorMenorVictoriasDelUsuarioSeleccionado }}</td>
+                <td>{{ mayorMenorDerrotasDelUsuarioSeleccionado }}</td>
+                <td>{{ mayorMenorPuntajePromedioDelUsuarioSeleccionado }}</td>
+              </tr>
+              <tr class="tr">
+                <td>PREGUNTADOS</td>
+                <td>{{ preguntadosVecesJugadasDelUsuarioSeleccionado }}</td>
+                <td>{{ preguntadosVictoriasDelUsuarioSeleccionado }}</td>
+                <td>{{ preguntadosDerrotasDelUsuarioSeleccionado }}</td>
+                <td>{{ preguntadosPuntajePromedioDelUsuarioSeleccionado }}</td>
+              </tr>
+              <tr class="tr">
+                <td>SIMON</td>
+                <td>{{ simonVecesJugadasDelUsuarioSeleccionado }}</td>
+                <td>{{ simonVictoriasDelUsuarioSeleccionado }}</td>
+                <td>{{ simonDerrotasDelUsuarioSeleccionado }}</td>
+                <td>{{ simonPuntajePromedioDelUsuarioSeleccionado }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button style="width: 300px; margin: 0 auto; margin-top: 30px;" (click)="reiniciarTabla()" type="submit"
+            class="btn-juegos">Cambiar</button>
+        </div>
+  
+        <form style="margin-top: 40px; width: 70%;" class="container contenedor-form" *ngIf="!seleccionoUnUsuario">
+            <div class="titulo">
+                <h1>Estadísticas individuales</h1>
+              </div>
+          <div class="d-flex flex-wrap">
+            <div class="flex-column" style="flex: 1;">
+              <label style="left:0;display: flex;">Usuarios:</label>
+              <div style="display: flex;
+            flex-direction: column;">
+                <select class="form-select" id="usuariosRegistrados" [(ngModel)]="usuarioSeleccionado" name="usuarioSeleccionado">
+                    <option value="" selected>Elija un usuario</option>
+                    <option *ngFor="let opcion of usuariosRegistrados" [value]="opcion.nombre">{{ opcion.nombre }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button (click)="generarEstadisticasIndividuales()" type="submit" class="btn-juegos" [disabled]="usuarioSeleccionado === ''" [ngClass]="{ 'btn-disabled': usuarioSeleccionado === '' }">Ver estadísticas</button>
+        </form>
+      </div>
+    </div>
+  
+  </div>
