@@ -1,0 +1,29 @@
+<div class="background-image">
+    <div class="titulo">
+        <h1>Panel de encuestas</h1>
+    </div>
+    <div class="encuesta-container">
+        <div class="encuesta-item" *ngFor="let encuesta of listaRespuestas">
+                <p class="escrito-por">Escrito por: {{ encuesta.encuesta.nombre }}</p>
+                <p class="fecha">{{ encuesta.fecha }}</p>
+                <p>Edad: {{ encuesta.encuesta.edad }}</p>
+                <p>Teléfono: {{ encuesta.encuesta.telefono }}</p>
+                <hr>
+                <p class="juego-fav">¿Cuál fue tu juego favorito?</p>
+                <p>{{ encuesta.encuesta.juegoFavorito }}</p>
+                <p>Categorías deseadas:</p>
+                <ul>
+                    <li *ngIf="encuesta.encuesta.nuevaCategoriaRpg">RPG</li>
+                    <li *ngIf="encuesta.encuesta.nuevaCategoriaPlataformas">Plataformas</li>
+                    <li *ngIf="encuesta.encuesta.nuevaCategoriaEstrategia">Estrategia</li>
+                    <li *ngIf="encuesta.encuesta.nuevaCategoriaOtros">Otros</li>
+                </ul>
+                <hr>
+                <div class="comentario-box">{{ encuesta.encuesta.comentario }}</div>
+        </div>
+    </div>
+    <div class="pie-de-pagina">
+        <p class="agradecimiento">Gracias por los comentarios</p>
+    </div>
+    <hr>
+</div>

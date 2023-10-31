@@ -51,7 +51,7 @@
           </small>
         </div>
       </div>
-  
+      <hr>
       <div class="preferencias-y-opiniones">
         <div class="col-sm mb-3">
           <label class="form-label">¿Que otros géneros te gustaria jugar?</label>
@@ -78,16 +78,16 @@
           <small *ngIf="nuevaCategoria" style="color: red;font-weight: bold">*Elija una opción</small>
         </div>
         <div class="col-sm mb-7">
-          <label class="form-label">Selecciona tu juego preferido</label>
+          <label class="form-label">¿Cuál fue tu juego favorito?</label>
           <select style="width: 13rem" class="form-select" id="juegoFavorito" formControlName="juegoFavorito">
-            <option value="ahorcado">Ahorcado</option>
-            <option value="mayormenor">Mayor o Menor</option>
-            <option value="preguntados">Preguntados</option>
-            <option value="simon">Simón</option>
+            <option value="Ahorcado">Ahorcado</option>
+            <option value="Mayor o menor">Mayor o Menor</option>
+            <option value="Preguntados">Preguntados</option>
+            <option value="Simon">Simón</option>
           </select>
         </div>
         <div class="col-sm mb-3">
-          <label for="comentario" class="form-label">Deja tu sugerencia o comentario.</label>
+          <label for="comentario" class="form-label">¿Tienes alguna sugerencia o comentario?</label>
           <textarea class="form-control" id="comentario" rows="4" style="resize: none;background-color:black;" formControlName="comentario"></textarea>
           <small style="color: red; font-weight: bold"
           *ngIf="formEncuesta.controls['comentario'].errors?.['required'] && formEncuesta.controls['comentario'].touched">
@@ -105,4 +105,5 @@
         </button>
       </div>      
     </form>
+    <hr>
   </div>

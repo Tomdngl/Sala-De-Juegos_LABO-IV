@@ -5,12 +5,14 @@ import { DatosRoutingModule } from './datos-routing.module';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { EncuestaComponent } from './encuesta/encuesta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RespuestasEncuestaComponent } from './respuestas-encuesta/respuestas-encuesta.component';
 
 
 @NgModule({
   declarations: [
     ResultadosComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    RespuestasEncuestaComponent
   ],
   imports: [
     CommonModule,

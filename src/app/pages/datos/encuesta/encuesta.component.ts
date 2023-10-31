@@ -26,7 +26,7 @@ export class EncuestaComponent implements OnInit {
       nuevaCategoriaPlataformas: [false],
       nuevaCategoriaEstrategia: [false],
       nuevaCategoriaOtros: [false],
-      juegoFavorito:['simon'],
+      juegoFavorito:['Simon'],
       comentario:['',[Validators.required,Validators.minLength(3),Validators.maxLength(200)]]
     });
 
@@ -51,7 +51,7 @@ export class EncuestaComponent implements OnInit {
           nombre: '',
           edad: '',
           telefono: '',
-          juegoFavorito: 'simon',
+          juegoFavorito: 'Simon',
           comentario: '',
         });
       } else {
@@ -70,7 +70,7 @@ export class EncuestaComponent implements OnInit {
       nombre: '',
       edad: '',
       telefono: '',
-      juegoFavorito: 'simon',
+      juegoFavorito: 'Simon',
     });
   }
 
@@ -102,7 +102,7 @@ export class EncuestaComponent implements OnInit {
   GuardarEncuesta() {
     const encuesta = {
       usuario: this.usuario,
-      fecha: moment(new Date()).format('DD-MM-YYYY'),
+      fecha: moment(new Date()).format('DD-MM-YYYY hh:mm:ss'),
       encuesta: this.formEncuesta.value,
     };
 

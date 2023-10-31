@@ -1,20 +1,25 @@
 import { CanActivateFn,Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { SwalService } from '../services/swal.service';
+import { map, take } from 'rxjs/operators';
+import { ToastService } from '../services/toast.service';
 
 export const canActivateAdminGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService);
-  const router = inject(Router);
-  const swal = inject(SwalService)
-  const { esAdmin } = userService;
+  const toast = inject(ToastService)
+  const { user$ } = userService;
 
-  if(esAdmin)
-  {
-    return true
-  }
+  console.log("Ingresa al guard")
 
-  swal.Error("ERROR","¡No puede ingresar sin ser Administrador!")
-  router.navigateByUrl('/');
-  return false;
+  return user$.pipe(
+    take(1), 
+    map((user) => {
+      if (user && user.rol === 'Administrador') {
+        return true; 
+      } else {
+        toast.showError("Debe ser administrador para acceder.", "Error");
+        return false; 
+      }
+    })
+  );
 };

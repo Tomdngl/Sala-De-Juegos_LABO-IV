@@ -34,7 +34,6 @@ export class UserService {
       );
   }
 
-
   async Login({email,clave}:any)
   {
     return await this.afAuth.signInWithEmailAndPassword(email,clave)
@@ -71,7 +70,7 @@ export class UserService {
         })
       })
     }).catch((error) => {
-      this.swal.Error("¡ERROR!",this.ObtenerMensajeError(error.errorCode))
+      this.swal.Error("Error.",this.ObtenerMensajeError(error.errorCode))
     })
   }
 
