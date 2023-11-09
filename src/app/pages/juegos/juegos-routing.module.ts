@@ -5,6 +5,7 @@ import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './preguntados/preguntados.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
+import { canActivateLogueoGuard } from 'src/app/guards/can-activate-logueo.guard';
 
 const routes: Routes = [
   {
@@ -13,19 +14,23 @@ const routes: Routes = [
   },
   {
     path:'ahorcado',
-    component:AhorcadoComponent
+    component:AhorcadoComponent,
+    canActivate:[canActivateLogueoGuard]
   },
   {
     path:'mayor-menor',
-    component:MayorMenorComponent
+    component:MayorMenorComponent,
+    canActivate:[canActivateLogueoGuard]
   },
   {
     path:'preguntados',
-    component:PreguntadosComponent
+    component:PreguntadosComponent,
+    canActivate:[canActivateLogueoGuard]
   },
   {
     path:'puzzle',
-    component:PuzzleComponent
+    component:PuzzleComponent,
+    canActivate:[canActivateLogueoGuard]
   },
 ];
 

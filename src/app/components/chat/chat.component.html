@@ -4,13 +4,12 @@
             <h5 class="card-title text-center titulo">Chat</h5>
             <div class="card-body" id="card-body">
                 <p *ngFor="let mensaje of mensajesTraidos" class="p-2 mensajes"
-                    [ngClass]="usuario?.idUsuario == mensaje.usuario?.idUsuario ? 'mensaje-enviado': 'mensaje-recibido'">
-                    <span [ngClass]="usuario?.idUsuario == mensaje.usuario?.idUsuario ? 'email-1' : 'email-2'">{{
-                        mensaje.usuario?.nombre }}</span>
-                    <br />
-                    {{ mensaje.mensaje }} <br />
-                    <span class="fecha">{{ mensaje.fecha }}</span>
-                </p>
+                [ngClass]="usuario?.idUsuario == mensaje.usuario?.idUsuario ? 'mensaje-enviado': 'mensaje-recibido'">
+                <span [ngClass]="usuario?.idUsuario == mensaje.usuario?.idUsuario ? 'email-1' : 'email-2'">{{ mensaje.usuario?.nombre }}</span>
+                <br />
+                {{ mensaje.mensaje }} <br />
+                <span class="fecha">{{ formatFecha(mensaje.fecha) }}</span>
+            </p>            
             </div>
             <form class="card-footer text-muted input-group">
                 <input type="text" class="form-control" placeholder="..." [(ngModel)]="mensajeAEnviar"

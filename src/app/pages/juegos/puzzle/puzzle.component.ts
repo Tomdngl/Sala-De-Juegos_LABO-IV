@@ -112,10 +112,9 @@ export class PuzzleComponent {
         this.swalService.Error("Que pena", "Has perdido.")
         this.CrearResultado();
       } else if (this.patronUsuario.length === this.pattern.length) {
-        if (this.level === 2) {
-          this.victoria = true;
+        if (this.level === 5) {
+          this.victoria = true; 
           this.swalService.Exito("Felicitaciones", "Has ganado");
-          this.isGameOver = true;
           this.CrearResultado();
         } else {
           this.level++;

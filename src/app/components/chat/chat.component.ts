@@ -3,8 +3,8 @@ import { ChatService } from '../../services/chat.service';
 import { UserService } from 'src/app/services/user.service';
 import { SwalService } from 'src/app/services/swal.service';
 import * as moment from 'moment';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +21,8 @@ export class ChatComponent {
   constructor(private chatService: ChatService, 
     public userService: UserService,
     private swal:SwalService,
-    private router:Router) {}
+    private router:Router)
+    {}
   
   ngOnInit() {
     this.userService.user$.subscribe((user:any) => {
@@ -42,21 +43,25 @@ export class ChatComponent {
   }
 
   EnviarMensaje() {
-    if(this.mensajeAEnviar.trim() != "")
-    {
+    if (this.mensajeAEnviar.trim() !== "") {
+      const fechaTimestamp = Timestamp.now();
+  
       const mensaje = {
-        usuario:this.usuario,
-        mensaje:this.mensajeAEnviar,
-        fecha:moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
+        usuario: this.usuario,
+        mensaje: this.mensajeAEnviar,
+        fecha: fechaTimestamp,
       }
   
       this.chatService.GuardarChat(mensaje);
       this.mensajeAEnviar = "";
       this.scrollToTheLastElementByClassName();
+    } else {
+      this.swal.Error("¡ERROR!", "Asegúrese de escribir algo");
     }
-    else{
-      this.swal.Error("¡ERROR!","Asegurese de escribir algo")
-    }
+  }
+  
+  formatFecha(fecha: Timestamp) {
+    return moment(fecha.toDate()).format('DD/MM/YYYY HH:mm');
   }
 
   scrollToTheLastElementByClassName(){
